@@ -1,12 +1,500 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>創作サイト</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>羽田智琴／バタチキ｜近所のカレー屋さん</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ec;
+  color: #272727;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ヘッダー */
+header {
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid #ddd8cf;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+}
+
+nav a:hover {
+  opacity: 0.5;
+}
+
+/* メイン */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 25px;
+}
+
+/* トップ */
+.hero {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d8d3ca;
+}
+
+.hero-text {
+  width: 45%;
+}
+
+.hero-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.hero h1 {
+  font-size: 44px;
+  margin: 15px 0 5px;
+  font-weight: normal;
+}
+
+.circle {
+  font-size: 14px;
+  color: #666;
+}
+
+.hero-image {
+  width: 55%;
+  height: 380px;
+  margin-left: 40px;
+  background:
+    linear-gradient(135deg, #dedbd4, #f9f7f2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  border: 1px solid #ddd8cf;
+}
+
+/* 共通 */
+section {
+  padding: 80px 0;
+  border-bottom: 1px solid #d8d3ca;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 26px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.section-title span {
+  font-size: 12px;
+  color: #777;
+}
+
+/* NEW WORKS */
+.works {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.work-image {
+  aspect-ratio: 4 / 3;
+  background: #dedbd4;
+  border: 1px solid #d3cec5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.work-type {
+  font-size: 10px;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+}
+
+.work-title {
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+/* ORIGINAL / FAN WORKS */
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.category {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid #d7d2c9;
+  padding: 35px;
+  min-height: 280px;
+}
+
+.category h2 {
+  font-size: 25px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.category p {
+  font-size: 14px;
+  color: #555;
+}
+
+.placeholder {
+  height: 120px;
+  background: #e3e0da;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+
+.more {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+/* PROFILE */
+.profile {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 50px;
+}
+
+.profile-icon {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #ddd9d1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.profile h2 {
+  margin-top: 0;
+  font-weight: normal;
+}
+
+.profile p {
+  font-size: 14px;
+}
+
+/* フッター */
+footer {
+  background: #292929;
+  color: #eee;
+  padding: 35px 25px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* スマホ */
+@media (max-width: 750px) {
+
+  .header-inner {
+    display: block;
+  }
+
+  nav {
+    margin-top: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    display: block;
+    padding: 60px 0;
+    min-height: auto;
+  }
+
+  .hero-text,
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-image {
+    margin: 35px 0 0;
+    height: 260px;
+  }
+
+  .works {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .profile {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
+
 <body>
-  <h1>創作サイトへようこそ！</h1>
-  <p>一次創作・二次創作を掲載しています。</p>
+
+<header>
+  <div class="header-inner">
+
+    <div class="logo">
+      羽田智琴／バタチキ
+    </div>
+
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#original">ORIGINAL</a>
+      <a href="#fanworks">FAN WORKS</a>
+      <a href="#books">BOOKS</a>
+      <a href="#profile">PROFILE</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- TOP -->
+<section class="hero">
+
+  <div class="hero-text">
+
+    <div class="hero-label">
+      COMIC / ILLUSTRATION
+    </div>
+
+    <h1>羽田智琴<br>／バタチキ</h1>
+
+    <div class="circle">
+      Circle：近所のカレー屋さん
+    </div>
+
+    <p>
+      漫画とイラストを描いています。<br>
+      一次創作・二次創作を中心に活動中。
+    </p>
+
+  </div>
+
+  <div class="hero-image">
+    MAIN VISUAL
+  </div>
+
+</section>
+
+
+<!-- NEW WORKS -->
+<section>
+
+  <div class="section-title">
+    <h2>NEW WORKS</h2>
+    <span>新着作品</span>
+  </div>
+
+  <div class="works">
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">COMIC</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">ILLUST</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">COMIC</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">ILLUST</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">COMIC</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+    <div>
+      <div class="work-image">IMAGE</div>
+      <div class="work-type">ILLUST</div>
+      <div class="work-title">作品タイトル</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORIGINAL / FAN WORKS -->
+<section class="categories">
+
+  <div class="category" id="original">
+
+    <h2>ORIGINAL</h2>
+
+    <p>
+      オリジナル漫画・イラスト・キャラクターなど。
+    </p>
+
+    <div class="placeholder">
+      ORIGINAL IMAGE
+    </div>
+
+    <a class="more" href="#">
+      一次創作を見る →
+    </a>
+
+  </div>
+
+
+  <div class="category" id="fanworks">
+
+    <h2>FAN WORKS</h2>
+
+    <p>
+      二次創作漫画・イラストを掲載しています。
+    </p>
+
+    <div class="placeholder">
+      FAN WORK IMAGE
+    </div>
+
+    <a class="more" href="#">
+      二次創作を見る →
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- BOOKS -->
+<section id="books">
+
+  <div class="section-title">
+    <h2>BOOKS</h2>
+    <span>同人誌</span>
+  </div>
+
+  <p>
+    発行した同人誌・イベント頒布物などを掲載予定です。
+  </p>
+
+  <div class="placeholder">
+    BOOKS
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile">
+
+  <div class="section-title">
+    <h2>PROFILE</h2>
+    <span>プロフィール</span>
+  </div>
+
+  <div class="profile">
+
+    <div class="profile-icon">
+      ICON
+    </div>
+
+    <div>
+
+      <h2>羽田智琴／バタチキ</h2>
+
+      <p>
+        サークル「近所のカレー屋さん」。<br>
+        漫画・イラストを中心に、一次創作と二次創作をしています。
+      </p>
+
+      <p>
+        X / Pixiv / BOOTH などのリンクはここに追加できます。
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  © 羽田智琴／バタチキ　近所のカレー屋さん
+</footer>
+
 </body>
 </html>
